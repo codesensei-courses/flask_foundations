@@ -1,15 +1,26 @@
-from datetime import datetime
-
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
+
+db = [
+    {"question": "Capital of Angola", "answer": "Luanda"},
+    {"question": "Capital of Haïti", "answer": "Port-au-Prince"},
+    {"question": "Capital of Kyrgyzstan", "answer": "Bishkek"},
+    {"question": "Capital of the Philippines", "answer": "Manila"},
+    {"question": "Capital of Uruguay", "answer": "Montevideo"},
+]
 
 
 @app.route("/")
 def welcome():
-    return "Welcome to my Flash Cards application!"
+    return render_template(
+        "welcome.html",
+        message="Data sent from view to template",
+        x=42
+    )
 
 
-@app.route("/time")
-def time():
-    return f"This page was shown at {datetime.now().time()}"
+@app.route("/card")
+def card_view():
+    card = db[0]
+    return render_template("card.html", card=card)
