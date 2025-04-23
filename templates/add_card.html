@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add card</title>
+</head>
+<body>
+  <h1>Add a new card</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <p>
+      Question:
+      <input type="text" name="question">
+    </p>
+    <p>
+      Answer:
+      <input type="text" name="answer">
+    </p>
+    <button type="submit">Create</button>
+  </form>
+</body>
+</html>
